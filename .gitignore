@@ -1,6 +1,7 @@
 # Compiled source #
 ###################
 __pycache__/
+bower_components/
 *.com
 *.class
 *.dll

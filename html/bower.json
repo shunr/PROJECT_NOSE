@@ -1,0 +1,19 @@
+{
+  "name": "project_nose",
+  "homepage": "https://github.com/indeed/PROJECT-NOSE",
+  "description": "A work in progress VPN",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularfire": "^2.0.2",
+    "material-design-lite": "^1.2.0"
+  }
+}
