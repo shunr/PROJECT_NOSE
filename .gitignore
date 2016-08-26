@@ -1,6 +1,7 @@
 # Compiled source #
 ###################
 __pycache__/
+node_modules/
 bower_components/
 *.com
 *.class
