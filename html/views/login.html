@@ -1,0 +1,39 @@
+<div class="full">
+    <div class="ui middle aligned center aligned grid full">
+        <div class="column login-form">
+            <div class="ui raised segments">
+                <div class="ui inverted teal segment padding-lg">
+                    <h3 class="ui header padding-small">
+                         <img src="img/logo-light.png">
+                    </h3>
+                </div>
+                <div class="ui segment">
+                    <h5 class="text-darken">
+                         Login to PROJECT NOSE
+                    </h5>
+                    <form class="ui large form">
+                        <div class="field" ng-class="(error.code.indexOf('email') > -1) ? 'error' : ''">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <input ng-model="data.user" type="text" name="email" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="field" ng-class="(error.code.indexOf('password') > -1) ? 'error' : ''">
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                <input ng-model="data.password" type="password" name="password" placeholder="Password">
+                            </div>
+                        </div>
+                        <div ng-click="login()" ng-class="{disabled: !isLoginValid()}" class="ui fluid large teal submit button">
+                            <i class="icon arrow right"></i>
+                        </div>
+                        <div class="ui basic segment padding-small text-darken">
+                            Don't have an account? <a ui-sref="register"><strong>Sign Up</strong></a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div ng-if="error" class="ui error message">{{error.message}}</div>
+        </div>
+    </div>
+</div>

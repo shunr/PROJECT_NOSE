@@ -2,12 +2,14 @@
 <html ng-app="nose">
 
 <head>
-    <base href="/">
-    <title>Title of the document</title>
+    <title>PROJECT_NOSE</title>
+    <base href="/"></base>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="bower_components/semantic/dist/semantic.min.css">
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
 
     <!-- bower:js -->
     <script src="bower_components/angular/angular.js"></script>
@@ -18,27 +20,18 @@
     <script src="bower_components/semantic/dist/semantic.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <!-- endbower -->
-    <script src="./js/app.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/dashboard.js"></script>
 </head>
 
-<body>
-    <div class="ui secondary pointing menu">
-        <a class="item"> Home </a>
-        <a class="item active">
-    Messages
-  </a>
-        <a class="item">
-    Friends
-  </a>
-        <div class="right menu">
-            <a class="ui item">
-      Logout
-    </a>
-        </div>
+<body class="bg bg-login" ng-controller="ctrl_auth">
+    <div ui-view class="full">
+
     </div>
-    <div class="ui segment" ui-view>
-        <p></p>
-    </div>
+    <script>
+    </script>
 </body>
 
 </html>

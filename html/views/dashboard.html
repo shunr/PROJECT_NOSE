@@ -1,0 +1,88 @@
+<div class="full">
+    <div class="ui middle aligned center aligned grid full">
+        <div class="column dashboard-form">
+            <div class="ui raised segments">
+                <div class="ui inverted teal segment padding-mid">
+                    <h5>
+                        <div class="ui icon top left pointing dropdown teal button menu-button">
+                            <i class="bars icon"></i>
+                            <div class="menu">
+                                <div class="header">
+                                    <i class="user icon"></i>
+                                    {{authObj.$getAuth().email}}
+                                </div>
+                                <div class="divider"></div>
+                                <div ng-click="" class="disabled item">
+                                    <i class="chat icon"></i> Option
+                                </div>
+                                <div ng-click="authObj.$signOut()" class="item">
+                                    <i class="log out icon"></i> Logout
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui icon top right pointing dropdown teal button menu-button">
+                            <i class="info circle icon"></i>
+                            <div class="menu">
+                                <div class="header">
+                                    <i class="green circle icon"></i> Online
+                                </div>
+                                <div class="divider"></div>
+                                <div class="header no-transform">
+                                    <i class="privacy icon"></i> proj-nose
+                                </div>
+                                <div class="item">
+                                    alpha
+                                </div>
+                            </div>
+                        </div>
+                         PROJECT NOSE Dashboard
+                    </h5>
+                </div>
+                <div class="ui left aligned segment">
+                    <div ng-if="!authObj.$getAuth().emailVerified" class="ui warning small message">
+                        <i class="close icon"></i>
+                        <div class="header">Your account is unverified!</div>
+                        <p>Please check your inbox for a verification email.</p>
+                    </div>
+                    <form class="ui form">
+                        <h4 class="ui dividing header">VPN Credentials</h4>
+                        <div class="field" ng-class="">
+                            <label>Username</label>
+                            <div class="ui left icon labeled input">
+                                <i class="user icon"></i>
+                                <input readonly="" ng-model="credentials.user" type="text" name="username" placeholder="Username">
+                                <div class="ui teal corner label" data-content="Your username is your email.">
+                                    <i class="lock icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field" ng-class="">
+                            <label>Password</label>
+                            <div class="ui left icon action input">
+                                <i class="lock icon"></i>
+                                <input ng-model="credentials.pass" type="{{plaintext ? 'text' : 'password'}}" name="password" placeholder="Password">
+
+                                <button ng-click="plaintext = !plaintext" class="ui icon button"><i ng-class="{hide: plaintext, unhide: !plaintext}" class="icon"></i></button>
+                                
+                            </div>
+                        </div>
+                        <h4 class="ui dividing header">Options</h4>
+                        <div class="field">
+                            <div class="ui slider checkbox">
+                                <input ng-model="credentials.enabled" type="checkbox" name="enabled">
+                                <label ng-bind="(credentials.enabled) ? 'Account enabled':'Account disabled'"></label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="ui segment">
+                    <div ng-click="saveData()" ng-class="{disabled: (!loaded || !isCredentialsValid())}" class="ui fluid teal submit button">
+                        <i class="icon checkmark"></i>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="error" class="ui error message">{{error.message}}</div>
+            <div ng-if="success" class="ui positive message">Your changes have been saved.</div>
+        </div>
+    </div>
+</div>

@@ -1,7 +1,7 @@
 CREDENTIALS_KEY = "credentials"
 USER_KEY = "user"
 PASS_KEY = "pass"
-DISABLED_KEY = "disabled"
+ENABLED_KEY = "enabled"
 TICK_INTERVAL = 60;
 RESTART_INTERVAL = 3600;
 FIREBASE_CONFIG = {
