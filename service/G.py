@@ -9,5 +9,5 @@ FIREBASE_CONFIG = {
     "authDomain": "nvpn-3128e.firebaseapp.com",
     "databaseURL": "https://nvpn-3128e.firebaseio.com",
     "storageBucket": "nvpn-3128e.appspot.com",
-    "serviceAccount": "./secrets/credentials.json"
+    "serviceAccount": "/var/www/vpn/service/secrets/credentials.json"
 }

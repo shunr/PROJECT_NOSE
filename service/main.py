@@ -30,7 +30,8 @@ def run(users):
             break
         else:
             time.sleep(G.TICK_INTERVAL)
-            
+
+radius_service.init_radius()
 while True:
     restart()
     run(users_cache)

@@ -39,37 +39,39 @@
                     </h5>
                 </div>
                 <div class="ui left aligned segment">
-                    <div ng-if="!authObj.$getAuth().emailVerified" class="ui warning small message">
+                    <div ng-if="!authObj.$getAuth().emailVerified && false" class="ui warning small message">
                         <i class="close icon"></i>
                         <div class="header">Your account is unverified!</div>
                         <p>Please check your inbox for a verification email.</p>
                     </div>
+                    <div ng-if="credentials.pass == defaultMD5" class="ui warning small message">
+                        <div class="header">Your VPN password is not set!</div>
+                        <p>Please set your VPN password in order to connect.</p>
+                    </div>
                     <form class="ui form">
                         <h4 class="ui dividing header">VPN Credentials</h4>
                         <div class="field" ng-class="">
-                            <label>Username</label>
+                            <label>VPN User</label>
                             <div class="ui left icon labeled input">
                                 <i class="user icon"></i>
-                                <input readonly="" ng-model="credentials.user" type="text" name="username" placeholder="Username">
+                                <input readonly="" value="{{credentials.user}}" type="text" name="username" placeholder="Username">
                                 <div class="ui teal corner label" data-content="Your username is your email.">
                                     <i class="lock icon"></i>
                                 </div>
                             </div>
                         </div>
                         <div class="field" ng-class="">
-                            <label>Password</label>
+                            <label>Set VPN Password</label>
                             <div class="ui left icon action input">
                                 <i class="lock icon"></i>
-                                <input ng-model="credentials.pass" type="{{plaintext ? 'text' : 'password'}}" name="password" placeholder="Password">
-
-                                <button ng-click="plaintext = !plaintext" class="ui icon button"><i ng-class="{hide: plaintext, unhide: !plaintext}" class="icon"></i></button>
-                                
+                                <input ng-model="data.pass" type="{{plaintext ? 'text' : 'password'}}" name="password" placeholder="New password">
+                                <button ng-click="plaintext = !plaintext" class="ui icon button"><i ng-class="{hide: plaintext, unhide: !plaintext}" class="icon"></i></button>   
                             </div>
                         </div>
                         <h4 class="ui dividing header">Options</h4>
                         <div class="field">
                             <div class="ui slider checkbox">
-                                <input ng-model="credentials.enabled" type="checkbox" name="enabled">
+                                <input ng-disabled="credentials.pass == defaultMD5" ng-model="credentials.enabled" type="checkbox" name="enabled">
                                 <label ng-bind="(credentials.enabled) ? 'Account enabled':'Account disabled'"></label>
                             </div>
                         </div>

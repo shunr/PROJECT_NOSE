@@ -4,6 +4,9 @@ import G
 
 users_path = "/etc/freeradius/mods-config/files/authorize"
 
+def init_radius():
+    call(["service", "freeradius", "start"])
+
 def reload_radius():
     call(["service", "freeradius", "reload"])
 
@@ -18,7 +21,7 @@ def init_users(users):
 
 def write_user(f, user):
     print(user["user"]
-          + " Cleartext-Password := '"
+          + " MD5-Password := '"
           + user["pass"]
           + "'"
           + " #" + user["id"], file=f)   

@@ -1,3 +1,6 @@
+var BLANK_MD5 = "d41d8cd98f00b204e9800998ecf8427e";
+var BLANK_MD5_HASHED = "74be16979710d4c4e7c6647856088456";
+
 var utils = (function() {
     var module = {}
     module.randomString = function(length) {
