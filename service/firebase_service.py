@@ -16,7 +16,7 @@ def get_users():
 
 def validate_user(user):
     login = user.get(G.CREDENTIALS_KEY)
-    if login and G.USER_KEY in login and G.PASS_KEY in login and login.get(G.ENABLED_KEY):
+    if login and G.USER_KEY in login and G.PASS_KEY in login and user.get(G.ENABLED_KEY):
         return True
     else:
         return False

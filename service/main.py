@@ -33,8 +33,12 @@ def run(users):
 
 radius_service.init_radius()
 while True:
-    restart()
-    run(users_cache)
+    try:
+        restart()
+        run(users_cache)
+    except:
+        time.sleep(60)
+        pass
 
     
 
