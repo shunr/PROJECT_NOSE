@@ -21,7 +21,7 @@ def init_users(users):
 
 def write_user(f, user):
     print(user["user"]
-          + " MD5-Password := '"
+          + " NT-Password := '"
           + user["pass"]
           + "'"
           + " #" + user["id"], file=f)   

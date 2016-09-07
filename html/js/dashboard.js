@@ -1,4 +1,4 @@
-N_CONTROLLERS.controller("ctrl_dashboard", function($scope, $firebaseAuth, $firebaseObject, $timeout, md5) {
+N_CONTROLLERS.controller("ctrl_dashboard", function($scope, $firebaseAuth, $firebaseObject, $timeout) {
     $scope.authObj = $firebaseAuth();
     $scope.data = {}
     $scope.credentials = null;
@@ -14,7 +14,7 @@ N_CONTROLLERS.controller("ctrl_dashboard", function($scope, $firebaseAuth, $fire
 
     $scope.saveData = function() {
         if ($scope.data.pass) {
-            $scope.credentials.pass = md5.createHash($scope.data.pass);
+            $scope.credentials.pass = utils.ntlm($scope.data.pass);
             $scope.authObj.$updatePassword($scope.data.pass).then(function() {
                 $scope.credentials.$save().then(function() {
                     $scope.error = null;

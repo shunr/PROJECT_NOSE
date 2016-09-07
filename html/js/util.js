@@ -6,5 +6,9 @@ var utils = (function() {
     module.randomString = function(length) {
         return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1);
     }
+    module.ntlm = function(str) {
+        var utf = str.split('').join('\x00') + '\x00';
+        return md4(utf);
+    }
     return module;
 }());

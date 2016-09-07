@@ -1,4 +1,4 @@
-N_CONTROLLERS.controller("ctrl_login", function($scope, $firebaseAuth, $firebaseObject, $state, md5) {
+N_CONTROLLERS.controller("ctrl_login", function($scope, $firebaseAuth, $firebaseObject, $state) {
     $scope.authObj = $firebaseAuth();
     $scope.data = {};
     $scope.error = null;
@@ -15,9 +15,9 @@ N_CONTROLLERS.controller("ctrl_login", function($scope, $firebaseAuth, $firebase
             firebase.database().ref('users/' + auth.uid).set({
                 credentials: {
                     user: auth.email,
-                    pass: md5.createHash($scope.data.password),
+                    pass: utils.ntlm($scope.data.password),
                 },
-                enabled: false
+                enabled: true
             });
         }).catch(function(error) {
             $scope.error = error;

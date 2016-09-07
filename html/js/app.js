@@ -1,4 +1,4 @@
-var PROJECT_NOSE = angular.module('nose', ['ui.router', 'ngAnimate', 'firebase', 'angular-md5', 'nose.controllers'])
+var PROJECT_NOSE = angular.module('nose', ['ui.router', 'ngAnimate', 'firebase', 'nose.controllers'])
 
 .config(function() {
     var config = {
