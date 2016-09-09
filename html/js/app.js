@@ -2,10 +2,10 @@ var PROJECT_NOSE = angular.module('nose', ['ui.router', 'ngAnimate', 'firebase',
 
 .config(function() {
     var config = {
-        apiKey: "AIzaSyCVdyLVzes-UyCUrOLcI6M4I3phbXZhh54",
-        authDomain: "nvpn-3128e.firebaseapp.com",
-        databaseURL: "https://nvpn-3128e.firebaseio.com",
-        storageBucket: "nvpn-3128e.appspot.com"
+        apiKey: "AIzaSyBJiRB8nGJbI-YdSm4Hk2SakAmsAB7wQhk",
+        authDomain: "nvpn-dev.firebaseapp.com",
+        databaseURL: "https://nvpn-dev.firebaseio.com",
+        storageBucket: "nvpn-dev.appspot.com",
     };
     firebase.initializeApp(config);
 })
@@ -23,7 +23,7 @@ var PROJECT_NOSE = angular.module('nose', ['ui.router', 'ngAnimate', 'firebase',
         .state('register', {
             url: "/register",
             templateUrl: "views/register.html",
-            controller: "ctrl_login"
+            controller: "ctrl_register"
         })
         .state('dashboard', {
             url: "/dashboard",
