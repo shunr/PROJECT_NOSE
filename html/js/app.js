@@ -1,12 +1,7 @@
 var PROJECT_NOSE = angular.module('nose', ['ui.router', 'ngAnimate', 'firebase', 'nose.controllers'])
 
 .config(function() {
-    var config = {
-        apiKey: "AIzaSyBJiRB8nGJbI-YdSm4Hk2SakAmsAB7wQhk",
-        authDomain: "nvpn-dev.firebaseapp.com",
-        databaseURL: "https://nvpn-dev.firebaseio.com",
-        storageBucket: "nvpn-dev.appspot.com",
-    };
+    var config = FIREBASE_CONFIG //change to FIREBASE_CONFIG_DEV when making changes on local instance
     firebase.initializeApp(config);
 })
 
