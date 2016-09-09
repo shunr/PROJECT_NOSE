@@ -21,22 +21,24 @@ def run(users):
     global start_time
     while True:
         elapsed = time.time() - start_time
+        logger.info(int(elapsed))
         new_data = firebase_service.get_users()
         if new_data != users:
             logger.info("Updated data!")
             radius_service.init_users(new_data)
             users = list(new_data)
-        if elapsed > G.RESTART_INTERVAL:
-            break
-        else:
-            time.sleep(G.TICK_INTERVAL)
+        #if elapsed > G.RESTART_INTERVAL:
+        #    break
+        #else:
+        time.sleep(G.TICK_INTERVAL)
 
 radius_service.init_radius()
+restart()
 while True:
     try:
-        restart()
         run(users_cache)
-    except:
+    except Exception as e:
+        logger.info(e)
         time.sleep(60)
         pass
 
