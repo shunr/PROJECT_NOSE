@@ -12,7 +12,7 @@
                         Login to <strong>NOSE VPN</strong>
                     </h5>
                     <form class="ui large form">
-                        <div class="field" ng-class="(error.code.indexOf('email') > -1) ? 'error' : ''">
+                        <div class="field" ng-class="(error.code.indexOf('email') > -1 && error.code.indexOf('reset') == -1) ? 'error' : ''">
                             <div class="ui left icon input">
                                 <i class="user icon"></i>
                                 <input ng-model="data.user" type="text" name="email" placeholder="Email">
@@ -62,7 +62,7 @@
         <div class="ui grey deny button">
             Cancel
         </div>
-        <div ng-click="forgotPassword()" class="ui teal right deny labeled icon button">
+        <div ng-click="forgotPassword()" class="ui teal deny right labeled icon button">
             Reset
             <i class="send icon"></i>
         </div>

@@ -3,14 +3,23 @@ N_CONTROLLERS.controller("ctrl_login", function($scope, $firebaseAuth, $firebase
     $scope.data = {};
     $scope.error = null;
     $scope.success = null;
+    
+    function msg_error(errorObj) {
+        $scope.success = null;
+        $scope.error = errorObj;
+    }
+    
+    function msg_success(successObj) {
+        $scope.error = null;
+        $scope.success = successObj;
+    }
+    
     $scope.login = function() {
         $scope.authObj.$signInWithEmailAndPassword($scope.data.user, $scope.data.password).then(function(firebaseUser) {
             //console.log("Signed in as:", firebaseUser.uid);
-        }).catch(function(error) {
-            $scope.success = null;
-            $scope.error = error;
-        });
+        }).catch(msg_error);
     }
+    
     $scope.register = function() {
         $scope.authObj.$createUserWithEmailAndPassword($scope.data.user, $scope.data.password).then(function(auth) {
             firebase.database().ref('users/' + auth.uid).set({
@@ -20,16 +29,16 @@ N_CONTROLLERS.controller("ctrl_login", function($scope, $firebaseAuth, $firebase
                 },
                 enabled: true
             });
-        }).catch(function(error) {
-            $scope.error = error;
-        });
+        }).catch(msg_error);
     }
+    
     $scope.isLoginValid = function() {
         if ($scope.data.user && $scope.data.password) {
             return true;
         }
         return false;
     }
+    
     $scope.isRegistrationValid = function() {
         if ($scope.data.user && $scope.data.password && $scope.data.confirm) {
             if ($scope.data.password == $scope.data.confirm) {
@@ -49,12 +58,14 @@ N_CONTROLLERS.controller("ctrl_login", function($scope, $firebaseAuth, $firebase
     $scope.forgotPassword = function() {
         if ($scope.data.resetEmail) {
             $scope.authObj.$sendPasswordResetEmail($scope.data.resetEmail).then(function() {
-                $scope.error = null;
-                $scope.success = { message: "Password reset sent to " + $scope.data.resetEmail};
+                msg_success({ 
+                    message: "Password reset sent to " + $scope.data.resetEmail
+                });
                 $scope.data.resetEmail = null;
-            }).catch(function(error) {
-                $scope.success = null;
-                $scope.error = error;
+            }).catch(function(error){
+                msg_error({ 
+                    message: "Could not reset password: " + error.message
+                });
             });
         }
     }
