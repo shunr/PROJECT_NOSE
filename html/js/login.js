@@ -2,11 +2,12 @@ N_CONTROLLERS.controller("ctrl_login", function($scope, $firebaseAuth, $firebase
     $scope.authObj = $firebaseAuth();
     $scope.data = {};
     $scope.error = null;
-    $scope.success = false;
+    $scope.success = null;
     $scope.login = function() {
         $scope.authObj.$signInWithEmailAndPassword($scope.data.user, $scope.data.password).then(function(firebaseUser) {
             //console.log("Signed in as:", firebaseUser.uid);
         }).catch(function(error) {
+            $scope.success = null;
             $scope.error = error;
         });
     }
@@ -43,5 +44,18 @@ N_CONTROLLERS.controller("ctrl_login", function($scope, $firebaseAuth, $firebase
 
     $scope.forgotModal = function() {
         $('.ui.modal').modal('show');
+    }
+    
+    $scope.forgotPassword = function() {
+        if ($scope.data.resetEmail) {
+            $scope.authObj.$sendPasswordResetEmail($scope.data.resetEmail).then(function() {
+                $scope.error = null;
+                $scope.success = { message: "Password reset sent to " + $scope.data.resetEmail};
+                $scope.data.resetEmail = null;
+            }).catch(function(error) {
+                $scope.success = null;
+                $scope.error = error;
+            });
+        }
     }
 });

@@ -36,6 +36,7 @@
                 </div>
             </div>
             <div ng-if="error" class="ui error message">{{error.message}}</div>
+            <div ng-if="success" class="ui success message">{{success.message}}</div>
         </div>
     </div>
 </div>
@@ -61,7 +62,7 @@
         <div class="ui grey deny button">
             Cancel
         </div>
-        <div class="ui teal right labeled icon button">
+        <div ng-click="forgotPassword()" class="ui teal right deny labeled icon button">
             Reset
             <i class="send icon"></i>
         </div>
