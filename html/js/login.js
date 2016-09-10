@@ -40,4 +40,8 @@ N_CONTROLLERS.controller("ctrl_login", function($scope, $firebaseAuth, $firebase
     if ($scope.authObj.$getAuth()) {
         $state.go("dashboard");
     }
+
+    $scope.forgotModal = function() {
+        $('.ui.modal').modal('show');
+    }
 });
