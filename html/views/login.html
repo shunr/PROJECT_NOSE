@@ -12,7 +12,7 @@
                         Login to <strong>NOSE VPN</strong>
                     </h5>
                     <form class="ui large form">
-                        <div class="field" ng-class="(error.code.indexOf('email') > -1) ? 'error' : ''">
+                        <div class="field" ng-class="(error.code.indexOf('email') > -1 && error.code.indexOf('reset') == -1) ? 'error' : ''">
                             <div class="ui left icon input">
                                 <i class="user icon"></i>
                                 <input ng-model="data.user" type="text" name="email" placeholder="Email">
@@ -29,11 +29,42 @@
                         </div>
                         <div class="ui basic segment padding-small text-darken">
                             Don't have an account? <a ui-sref="register"><strong>Sign Up</strong></a>
+                            <br/>
+                            <a ng-click="forgotModal()" href="#"><strong>Forgot password?</strong></a>
                         </div>
                     </form>
                 </div>
             </div>
             <div ng-if="error" class="ui error message">{{error.message}}</div>
+            <div ng-if="success" class="ui success message">{{success.message}}</div>
+        </div>
+    </div>
+</div>
+
+<div class="ui small modal">
+    <i class="close icon"></i>
+    <div class="header">
+        Password reset
+    </div>
+    <div class="content">
+        <div class="description">
+            <div class="ui header">Forgot your password?</div>
+            <p>Enter the email address you used to register your account.</p>
+            <div class="field">
+                <div class="ui left icon fluid input">
+                    <i class="mail icon"></i>
+                    <input ng-model="data.resetEmail" type="text" name="email" placeholder="Email">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="actions">
+        <div class="ui grey deny button">
+            Cancel
+        </div>
+        <div ng-click="forgotPassword()" class="ui teal deny right labeled icon button">
+            Reset
+            <i class="send icon"></i>
         </div>
     </div>
 </div>

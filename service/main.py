@@ -1,5 +1,6 @@
 import time
 import logger
+from os import utime
 import firebase_service
 import radius_service
 import G
@@ -30,6 +31,7 @@ def run(users):
         #if elapsed > G.RESTART_INTERVAL:
         #    break
         #else:
+        utime(G.STATUS_FILE, None)
         time.sleep(G.TICK_INTERVAL)
 
 radius_service.init_radius()
