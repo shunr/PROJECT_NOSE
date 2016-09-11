@@ -11,3 +11,4 @@ FIREBASE_CONFIG = {
     "storageBucket": "nvpn-3128e.appspot.com",
     "serviceAccount": "/var/www/vpn/service/secrets/credentials.json"
 }
+STATUS_FILE="/var/www/vpn/html/php/status"
